@@ -1,0 +1,41 @@
+name: Source check
+
+# Checks that the CUM datasets on datos.gov.co can be read from GitHub's
+# servers. It is separate from CI on purpose: when datos.gov.co is down, this
+# workflow fails and the pull requests that do not touch the source do not.
+on:
+  # Run it by hand from the Actions tab.
+  workflow_dispatch:
+  # Run it on pull requests that change the check itself.
+  pull_request:
+    paths:
+      - ".github/workflows/source-check.yml"
+      - "src/colombia_medicines_catalog/source.py"
+
+permissions:
+  contents: read
+
+jobs:
+  check-source:
+    name: datos.gov.co can be read
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install uv and Python
+        uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d # v10.4.0
+        with:
+          python-version: "3.12"
+
+      - name: Install the pinned dependencies
+        run: uv sync --locked
+
+      - name: Read every CUM dataset
+        run: uv run colmed check-source
+        env:
+          # Optional. Without it the requests share the anonymous limit.
+          SOCRATA_APP_TOKEN: ${{ secrets.SOCRATA_APP_TOKEN }}

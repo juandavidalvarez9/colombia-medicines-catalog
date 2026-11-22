@@ -1,11 +1,12 @@
 """Command-line entry point."""
 
 import argparse
+import os
 import sys
 from collections.abc import Sequence
 from pathlib import Path
 
-from colombia_medicines_catalog import __version__
+from colombia_medicines_catalog import __version__, source
 from colombia_medicines_catalog.contract import ContractError
 from colombia_medicines_catalog.pipeline import EXAMPLE_CONTRACT, run
 
@@ -27,6 +28,16 @@ def build_parser() -> argparse.ArgumentParser:
     )
     run_parser.add_argument("source", type=Path, help="CSV file to read")
     run_parser.add_argument("dest", type=Path, help="Parquet file to write")
+
+    commands.add_parser(
+        "check-source",
+        help="check that the CUM datasets on datos.gov.co can be read",
+        description=(
+            "Read the metadata and a first page of rows of each CUM dataset on "
+            "datos.gov.co, and report what looks wrong. Set SOCRATA_APP_TOKEN "
+            "to send an app token."
+        ),
+    )
     return parser
 
 
@@ -41,7 +52,37 @@ def main(argv: Sequence[str] | None = None) -> int:
     if args.command is None:
         parser.print_help()
         return 0
+    if args.command == "check-source":
+        return _check_source()
     return _run(args.source, args.dest)
+
+
+def _check_source() -> int:
+    token = os.environ.get("SOCRATA_APP_TOKEN")
+    if token:
+        print("Using the app token in SOCRATA_APP_TOKEN.")
+    else:
+        print("No app token: requests share the anonymous limit.")
+
+    checks = source.check_source(token=token)
+    for check in checks:
+        label = f"{check.dataset.id}  {check.dataset.status}"
+        if check.ok:
+            print(
+                f"{label}  updated {check.updated_on}  {check.columns} columns  "
+                f"{check.license}  sample of {check.sample_rows} rows  ok"
+            )
+        else:
+            print(f"{label}  PROBLEM")
+            for problem in check.problems:
+                print(f"  - {problem}")
+
+    failed = sum(not check.ok for check in checks)
+    if failed:
+        print(f"{failed} of {len(checks)} datasets have problems.")
+        return 1
+    print(f"All {len(checks)} datasets can be read.")
+    return 0
 
 
 def _run(source: Path, dest: Path) -> int:

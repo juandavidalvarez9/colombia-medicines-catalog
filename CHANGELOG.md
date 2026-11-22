@@ -9,3 +9,6 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ### Added
 
 - Project started from the data product template.
+- `colmed check-source` reads the metadata and a first page of each of the
+  four CUM datasets on datos.gov.co, and reports what looks wrong. The
+  "Source check" workflow runs it from GitHub's servers.
