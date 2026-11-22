@@ -1,0 +1,125 @@
+{
+  "id": "vgr4-gemg",
+  "name": "CÓDIGO ÚNICO DE MEDICAMENTOS EN TRÁMITE DE RENOVACIÓN",
+  "attribution": "Instituto Nacional de Vigilancia de Medicamentos y Alimentos - INVIMA, Bogotá D.C.",
+  "licenseId": "CC_40_BY_SA",
+  "rowsUpdatedAt": 1794831516,
+  "columns": [
+    {
+      "fieldName": "expediente",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "producto",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "titular",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "registrosanitario",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "fechaexpedicion",
+      "dataTypeName": "calendar_date"
+    },
+    {
+      "fieldName": "fechavencimiento",
+      "dataTypeName": "calendar_date"
+    },
+    {
+      "fieldName": "estadoregistro",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "expedientecum",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "consecutivocum",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "cantidadcum",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "descripcioncomercial",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "estadocum",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "fechaactivo",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "fechainactivo",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "muestramedica",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "unidad",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "atc",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "descripcionatc",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "viaadministracion",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "concentracion",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "principioactivo",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "unidadmedida",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "cantidad",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "unidadreferencia",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "formafarmaceutica",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "nombrerol",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "tiporol",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "modalidad",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "ium",
+      "dataTypeName": "text"
+    }
+  ]
+}
