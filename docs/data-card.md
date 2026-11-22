@@ -1,7 +1,7 @@
 # Data card
 
 This card describes the data the project reads. A test checks that the
-**Fields** table matches the data contract in `src/data_product/pipeline.py`,
+**Fields** table matches the data contract in `src/colombia_medicines_catalog/pipeline.py`,
 so the two cannot drift apart.
 
 ## Source

@@ -1,5 +1,5 @@
 [project]
-name = "data-product"
+name = "colombia-medicines-catalog"
 version = "0.1.0"
 description = "Starting point for small, tested data products."
 readme = "README.md"
@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [project.scripts]
-data-product = "data_product.cli:main"
+colmed = "colombia_medicines_catalog.cli:main"
 
 [dependency-groups]
 dev = [
@@ -57,7 +57,7 @@ warn_unreachable = true
 
 [tool.coverage.run]
 branch = true
-source_pkgs = ["data_product"]
+source_pkgs = ["colombia_medicines_catalog"]
 # Some tests start a new Python process; measure that process too.
 patch = ["subprocess"]
 

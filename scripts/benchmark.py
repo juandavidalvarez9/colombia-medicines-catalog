@@ -25,8 +25,8 @@ from pathlib import Path
 
 import duckdb
 
-from data_product.contract import quote_text
-from data_product.pipeline import EXAMPLE_CONTRACT, run
+from colombia_medicines_catalog.contract import quote_text
+from colombia_medicines_catalog.pipeline import EXAMPLE_CONTRACT, run
 
 DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / "docs" / "benchmarks.md"
 MEGABYTE = 1024 * 1024

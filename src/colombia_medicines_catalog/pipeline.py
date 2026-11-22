@@ -10,7 +10,7 @@ from pathlib import Path
 
 import duckdb
 
-from data_product.contract import (
+from colombia_medicines_catalog.contract import (
     Column,
     Contract,
     quote_name,

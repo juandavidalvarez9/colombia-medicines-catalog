@@ -5,11 +5,11 @@ import sys
 from collections.abc import Sequence
 from pathlib import Path
 
-from data_product import __version__
-from data_product.contract import ContractError
-from data_product.pipeline import EXAMPLE_CONTRACT, run
+from colombia_medicines_catalog import __version__
+from colombia_medicines_catalog.contract import ContractError
+from colombia_medicines_catalog.pipeline import EXAMPLE_CONTRACT, run
 
-PROG = "data-product"
+PROG = "colmed"
 
 
 def build_parser() -> argparse.ArgumentParser:
