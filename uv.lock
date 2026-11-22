@@ -191,7 +191,7 @@ wheels = [
 ]
 
 [[package]]
-name = "data-product"
+name = "colombia-medicines-catalog"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

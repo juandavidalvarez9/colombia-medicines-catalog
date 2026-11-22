@@ -6,8 +6,8 @@ from pathlib import Path
 import duckdb
 import pytest
 
-from data_product.contract import ContractError
-from data_product.pipeline import EXAMPLE_CONTRACT, RunReport, run
+from colombia_medicines_catalog.contract import ContractError
+from colombia_medicines_catalog.pipeline import EXAMPLE_CONTRACT, RunReport, run
 
 from .conftest import CsvWriter
 

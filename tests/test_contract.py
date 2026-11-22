@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from data_product.contract import (
+from colombia_medicines_catalog.contract import (
     Column,
     Contract,
     ContractError,

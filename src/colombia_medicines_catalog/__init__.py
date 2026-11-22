@@ -2,4 +2,4 @@
 
 from importlib.metadata import version
 
-__version__ = version("data-product")
+__version__ = version("colombia-medicines-catalog")

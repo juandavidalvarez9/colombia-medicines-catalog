@@ -15,7 +15,7 @@ from pathlib import Path
 
 import pytest
 
-from data_product.pipeline import EXAMPLE_CONTRACT
+from colombia_medicines_catalog.pipeline import EXAMPLE_CONTRACT
 
 from .conftest import NOT_PART_OF_A_COPY, ROOT, copy_project, run_uv
 

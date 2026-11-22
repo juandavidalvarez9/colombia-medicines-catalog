@@ -1,4 +1,4 @@
-"""The command line: what a person sees when they type `data-product`."""
+"""The command line: what a person sees when they type `colmed`."""
 
 import subprocess
 import sys
@@ -7,8 +7,8 @@ from pathlib import Path
 
 import pytest
 
-import data_product
-from data_product.cli import main
+import colombia_medicines_catalog
+from colombia_medicines_catalog.cli import main
 
 from .conftest import CsvWriter
 
@@ -21,7 +21,10 @@ def test_cli_version_exits_zero(capsys: pytest.CaptureFixture[str]) -> None:
         main(["--version"])
 
     assert excinfo.value.code == 0
-    assert capsys.readouterr().out.strip() == f"data-product {data_product.__version__}"
+    assert (
+        capsys.readouterr().out.strip()
+        == f"colmed {colombia_medicines_catalog.__version__}"
+    )
 
 
 def test_cli_unknown_command_exits_2(capsys: pytest.CaptureFixture[str]) -> None:
@@ -38,25 +41,25 @@ def test_cli_without_arguments_prints_help_and_exits_zero(
     exit_code = main([])
 
     assert exit_code == 0
-    assert "usage: data-product" in capsys.readouterr().out
+    assert "usage: colmed" in capsys.readouterr().out
 
 
 def test_console_script_points_to_main() -> None:
-    (script,) = entry_points(group="console_scripts", name="data-product")
+    (script,) = entry_points(group="console_scripts", name="colmed")
 
     assert script.load() is main
 
 
 def test_module_runs_as_script() -> None:
     result = subprocess.run(
-        [sys.executable, "-m", "data_product", "--version"],
+        [sys.executable, "-m", "colombia_medicines_catalog", "--version"],
         capture_output=True,
         text=True,
         check=False,
     )
 
     assert result.returncode == 0, result.stderr
-    assert result.stdout.strip() == f"data-product {data_product.__version__}"
+    assert result.stdout.strip() == f"colmed {colombia_medicines_catalog.__version__}"
 
 
 def test_cli_run_writes_output_and_reports_rows(
